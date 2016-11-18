@@ -1,0 +1,24 @@
+html,body {
+	height: 100%;
+}
+.header {
+    padding: 20px;
+    min-height: 29px;
+    background: #000;
+}
+.login-wrap {
+	width: 50%;
+    max-width: 300px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    ms-transform: translateY(-50%);
+  	transform: translateY(-50%);
+}
+.login-wrap input {
+	width: 100%;
+	margin: 10px 0 0 0;
+    border: 1px solid #ccc;
+}	
