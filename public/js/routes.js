@@ -13,6 +13,14 @@
                 }
             }
 		}).state({
+			name: 'meanApp.register',
+			url: '/',
+			views: {
+                'content@': {
+                    templateUrl: '../partials/register.html'
+                }
+            }
+		}).state({
 			name: 'meanApp.login',
 			url: '/',
 			views: {
