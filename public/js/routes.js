@@ -13,19 +13,29 @@
                 }
             }
 		}).state({
-			name: 'meanApp.register',
+			name: 'meanApp.home',
 			url: '/',
 			views: {
                 'content@': {
-                    templateUrl: '../partials/register.html'
+                    templateUrl: '../partials/home.html'
+                }
+            }
+		}).state({
+			name: 'meanApp.register',
+			url: '/register',
+			views: {
+                'content@': {
+                    templateUrl: '../partials/register.html',
+				    controller: 'signupCtrl'
                 }
             }
 		}).state({
 			name: 'meanApp.login',
-			url: '/',
+			url: '/login',
 			views: {
                 'content@': {
-                    templateUrl: '../partials/login.html'
+                    templateUrl: '../partials/login.html',
+				    controller: 'loginCtrl'
                 }
             }
 		});
