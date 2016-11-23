@@ -10,11 +10,10 @@
 					data: data
 				})
 			},
-			login : function(data){
+			getUsers : function(){
 				return $http({
 					method: 'GET',
-					url: '/login',
-					data: data
+					url: '/getusers'
 				})
 			}
 		}

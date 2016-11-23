@@ -17,7 +17,8 @@
 			url: '/',
 			views: {
                 'content@': {
-                    templateUrl: '../partials/home.html'
+                    templateUrl: '../partials/home.html',
+                    controller: 'listCtrl'
                 }
             }
 		}).state({

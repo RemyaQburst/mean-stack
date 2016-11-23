@@ -1,4 +1,13 @@
 <div>
-	Already a member? <a href="login" ui-sref="meanApp.login">Signin</a>
-	<a href="register" ui-sref="meanApp.register">Signup</a>
+	<ul>
+		<li ng-repeat="user in users">
+			<span>{{user.name}}</span>
+			<ul>
+				<li ng-repeat="proj in user.projects">
+					<span>{{proj.projName}}</span>
+					<span>{{proj.allocation}}</span>
+				</li>
+			</ul>
+		</li>
+	</ul>
 </div>
