@@ -1,13 +1,72 @@
-<div>
-	<ul>
-		<li ng-repeat="user in users">
-			<span>{{user.name}}</span>
-			<ul>
-				<li ng-repeat="proj in user.projects">
-					<span>{{proj.projName}}</span>
-					<span>{{proj.allocation}}</span>
-				</li>
-			</ul>
-		</li>
-	</ul>
+<div class="container wrapper">
+	<div class="alert alert-default">
+		<div class="input-group search-wrap">
+		    <input type="text" class="form-control" ng-model="searchText" placeholder="Search by name">
+		    <span class="input-group-btn">
+		    	<button class="btn btn-primary" ng-click="findUser()" type="button">Search</button>
+		    </span>
+    	</div>
+	</div>
+	<div class="table-responsive">
+		<table class="table table-hover">
+			<tbody>
+				<tr>
+					<th>ID</th>
+					<th>Name</th>
+					<th>Age</th>
+					<th>Experience</th>
+					<th></th>
+					<th></th>
+				</tr>
+				<tr ng-repeat="user in users" ng-if="users.length>0">
+					<td>{{user._userid}}</td>
+					<td>{{user.name}}</td>
+					<td>{{user.age}}</td>
+					<td>{{user.exp}}</td>
+					<td>
+						<button class="btn btn-warning" ng-click="editUser(user)" title="Edit">
+							<span class="glyphicon glyphicon-edit"></span>
+						</button>
+					</td>
+					<td>
+						<button class="btn btn-danger" ng-click="" title="Delete">
+							<span class="glyphicon glyphicon-trash"></span>
+						</button>
+					</td>
+				</tr>
+				<tr ng-if="users.length==0">
+					<td colspan="6">
+						No records found
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	</form>
+	<div class="col-md-6 col-md-offset-3">
+		<div ng-if="errors">
+			<span class="errors" ng-repeat="error in errors">{{error}}</span>
+		</div>
+		<form class="form-horizontal alert alert-warning">
+			<h3 ng-if="addEmpForm">Add Employee</h3>
+			<h3 ng-if="editEmpForm">Update Employee Details</h3>
+			<div class="form-group">
+				<input type="text" class="form-control" placeholder="Enter Employee Id" ng-model="emp._userid">
+			</div>
+			<div class="form-group">
+				<input type="text" class="form-control" placeholder="Enter Employee's Name" ng-model="emp.name">
+			</div>
+			<div class="form-group">
+				<input type="number" class="form-control" placeholder="Enter Employee Age" ng-model="emp.age">
+			</div>
+			<div class="form-group">
+				<input type="number" class="form-control" placeholder="Enter Employee Experience" ng-model="emp.exp">
+			</div>
+			<div class="form-group">
+				<button class="btn btn-warning" ng-if="addEmpForm" ng-click="addUser()">Add</button>
+				<button class="btn btn-warning" ng-if="editEmpForm" ng-click="updateUser()">Update</button>
+				<button class="btn btn-warning" ng-if="editEmpForm" ng-click="cancelUpdate()">Cancel</button>
+			</div>
+		</form>
+	</div>	
 </div>

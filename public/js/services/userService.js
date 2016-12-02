@@ -3,10 +3,10 @@
 	
 	var userService = function($http){
 		return {
-			register : function(data){
+			addUser : function(data){
 				return $http({
 					method: 'POST',
-					url: '/register',
+					url: '/adduser',
 					data: data
 				})
 			},
@@ -14,6 +14,18 @@
 				return $http({
 					method: 'GET',
 					url: '/getusers'
+				})
+			},
+			findUser : function(userName) {
+				return $http({
+					method: 'GET',
+					url: '/finduser/' + userName,
+				})
+			},
+			editUser : function() {
+				return $http({
+					method: 'PUT',
+					url: '/finduser/' + userName,
 				})
 			}
 		}

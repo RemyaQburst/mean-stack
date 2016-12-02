@@ -1,24 +1,26 @@
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: url('fonts/glyphicons-halflings-regular.eot');
+  src: url('fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('fonts/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');
+}
 html,body {
 	height: 100%;
 }
-.header {
+/*.header {
     padding: 20px;
     min-height: 29px;
     background: #000;
+}*/
+.search-wrap button{
+    width: 215px;
 }
-.login-wrap {
-	width: 50%;
-    max-width: 300px;
-    margin: 0 auto;
+.errors {
+    display: block;
+    color: red;
+}
+.wrapper table th,td {
     text-align: center;
-    position: relative;
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-    ms-transform: translateY(-50%);
-  	transform: translateY(-50%);
 }
-.login-wrap input {
-	width: 100%;
-	margin: 10px 0 0 0;
-    border: 1px solid #ccc;
-}	
+.wrapper form {
+    padding: 15px 35px;
+}
