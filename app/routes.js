@@ -6,6 +6,7 @@ module.exports = function(app) {
 	    res.sendFile(path.join(__dirname, '../public/index.html'));
 	});
 	app.get('/getusers', function(req, res) {
+        //Users.find(function(err, users) {
         // use mongoose to get all users in the database
         Users.find({}).limit(10).exec(function(err, users) {
 
@@ -24,15 +25,16 @@ module.exports = function(app) {
                 res.send(err)
 
 		})*/
-        Users.create(req.body,function(err) {
+        Users.create(req.body,function(user,err) {
             if (err)
                 return res.send(err)
             else {
-	            Users.find(function(err, users) {
-		            if (err)
-		                res.send(err)
-		            res.json(users); 
-		        }); 
+                res.json(user)
+	         //    Users.find(function(err, users) {
+		        //     if (err)
+		        //         res.send(err)
+		        //     res.json(users); 
+		        // }); 
         	}
         });
     });
@@ -44,4 +46,44 @@ module.exports = function(app) {
             res.json(users);
         });
     });
+    app.put('/updateuser/:_userid',function(req, res) {
+        // Users.findOne({ '_userid':req.params._userid}, function(err, user) {
+        //     if (err)
+        //         res.send(err);
+        //     //user = req.body;
+        //     user._userid = req.body._userid;
+        //     user.age = req.body.age;
+        //     user.exp = req.body.exp;
+        //     user.name = req.body.name;
+        //     // user.save(function(err) {
+        //     //     if (err)
+        //     //         res.send(err);
+
+        //     //     res.json({ message: 'Bear updated!' });
+        //     // });
+        //     user.save(function (err, updateduser) {
+        //         if (err) {
+        //             res.status(500).send(err)
+        //         }
+        //         res.send(updateduser);
+        //     });
+        // });
+        Users.findOneAndUpdate({'_userid':req.params._userid}, req.body, {upsert:true}, function(err, doc){
+            if (err)
+              res.send(err);
+            res.send("succesfully updated");
+        });
+    });
+    app.delete('/updateuser/:_userid', function(req, res) {
+        Users.remove({
+          _userid: req.params._userid
+        }, function (err, blog) {
+          if (err) return res.send(err);
+          res.json({ message: 'Success'});
+        });
+    });
+    // Tank.findByIdAndUpdate(id, { $set: { size: 'large' }}, { new: true }, function (err, tank) {
+    //   if (err) return handleError(err);
+    //   res.send(tank);
+    // });
 }

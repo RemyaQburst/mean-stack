@@ -22,10 +22,11 @@
 					url: '/finduser/' + userName,
 				})
 			},
-			editUser : function() {
+			updateUser : function(data) {
 				return $http({
 					method: 'PUT',
-					url: '/finduser/' + userName,
+					url: '/updateuser/' + data._userid,
+					data: data
 				})
 			}
 		}

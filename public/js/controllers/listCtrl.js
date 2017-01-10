@@ -21,7 +21,7 @@
 				}
 				else {
 					$scope.emp = {};
-					$scope.users = response.data;
+					$scope.users.push(response.data);
 				}
 			},function(error){
 				$scope.errors = error;
@@ -44,24 +44,27 @@
 			$scope.editEmpForm = true;
 			$scope.emp = angular.copy(user);
 			$scope.errors = [];
-			userService.editUser($scope.emp).then(function(response){
+		}
+		$scope.cancelUpdate = function() {
+			$scope.addEmpForm = true;
+			$scope.editEmpForm = false;
+			$scope.emp = {};
+		}
+		$scope.updateUser = function() {
+			userService.updateUser($scope.emp).then(function(response){
 				if(response.data.errors) {
 					angular.forEach(response.data.errors, function(value, key) {
 						$scope.errors.push(value.message);
 					});
 				}
 				else {
-					$scope.emp = {};
-					$scope.users = response.data;
+					if(response.data == "succesfully saved") {
+						$scope.emp = 
+					}
 				}
 			},function(error){
 				$scope.errors = error;
 			});
-		}
-		$scope.cancelUpdate = function() {
-			$scope.addEmpForm = true;
-			$scope.editEmpForm = false;
-			$scope.emp = {};
 		}
 		$scope.getUsers();
 	}

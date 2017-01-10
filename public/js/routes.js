@@ -21,24 +21,6 @@
                     controller: 'listCtrl'
                 }
             }
-		}).state({
-			name: 'meanApp.register',
-			url: '/register',
-			views: {
-                'content@': {
-                    templateUrl: '../partials/register.html',
-				    controller: 'signupCtrl'
-                }
-            }
-		}).state({
-			name: 'meanApp.login',
-			url: '/login',
-			views: {
-                'content@': {
-                    templateUrl: '../partials/login.html',
-				    controller: 'loginCtrl'
-                }
-            }
 		});
 	};
 	angular.module('meanApp')
